@@ -14,13 +14,13 @@ const createUser = async(req,res)=>{
         })
      }
 
-    //  const existingUser = userModel.findOne({email});
-    //  if(existingUser){
-    //     return res.status(401).send({
-    //         success:false,
-    //         msg:'user already exists !'
-    //     })
-    //  }
+     const existingUser = await userModel.findOne({email});
+     if(existingUser){
+        return res.status(401).send({
+            success:false,
+            msg:'user already exists !'
+        })
+     }
 
 
      // Password Hashing
@@ -33,7 +33,7 @@ const createUser = async(req,res)=>{
     //  return res.status(201).send({
     //     success:true,
     //     msg:'Register Successfull',
-    //     newUser
+    //     newUser 
     //  })
 
     const token = jwt.sign({id:user._id}, process.env.SECRET_KEY, {expiresIn:'1d'}, (error, token)=>{

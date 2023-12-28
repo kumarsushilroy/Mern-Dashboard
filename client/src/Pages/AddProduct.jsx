@@ -18,24 +18,25 @@ const AddProduct = () => {
 
  const handleSubmit = async(e)=>{
     e.preventDefault();
-  //  let addProduct = await fetch('http://localhost:4000/create/product', {
-  //   method:'post',
-  //   body:JSON.stringify(obj),
-  //   headers:{
-  //       'Content-Type':'application/json'
-  //   }
-  //  });
-  //  addProduct = await addProduct.json();
-  //  alert('product added successfully');
-  //  navigate('/product')
-  const formData = new FormData();
-  formData.append('image', productimage)
-  const result = await axios.post('http://localhost:4000/create/product',
-  formData,
-  {
-    headers:{'Content-Type' : 'multipart/form-data'}
-  }
-  )
+   let addProduct = await fetch('http://localhost:4000/create/product', {
+    method:'post',
+    body:JSON.stringify(obj),
+    headers:{
+        'Content-Type':'application/json'
+    }
+   });
+   addProduct = await addProduct.json();
+   alert('product added successfully');
+   navigate('/product')
+
+  // const formData = new FormData();
+  // formData.append('image', productimage)
+  // const result = await axios.post('http://localhost:4000/create/product',
+  // formData,
+  // {
+  //   headers:{'Content-Type' : 'multipart/form-data'}
+  // }
+  // )
  }
 
   return (
@@ -86,7 +87,8 @@ const AddProduct = () => {
 
             <div className="w-full">
                <label htmlFor="" className="block">Image</label>
-               <input  onChange={(e)=>setproductimage(e.target.files[0])} type="file" className="w-full outline-none border p-1 rounded" />
+               {/* <input  onChange={(e)=>setproductimage(e.target.files[0])} type="file" className="w-full outline-none border p-1 rounded" /> */}
+               <input placeholder="enter url" className="border w-full outline-none p-1 rounded" onChange={(e)=>setproductimage(e.target.value)} type="text" />
             </div>
 
             <div className="w-full">

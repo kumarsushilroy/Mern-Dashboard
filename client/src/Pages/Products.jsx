@@ -66,11 +66,11 @@ const Products = () => {
 
   return (
     <div>
-        <div style={{overflowy :'scroll'}} className=' mt-10 md:w-[1400px] border w-full mx-auto p-3 shadow-lg' >
-          <div className='flex items-center'>
+        <div  className=' md:mt-10 md:w-[1400px] border w-full   mx-auto p-3 shadow-lg' >
+          <div className='md:flex items-center'>
           <Link to={'/addproduct'}><button className='border px-5 py-1 bg-green-600 hover:bg-green-700 text-white font-bold rounded mb-2 duration-300'>Add+</button> </Link>
-          <input type="text" onChange={handlesearch} placeholder='search products .......' className='w-[600px] border-2 border-yellow-400 mx-auto px-4 py-1 mb-2 border outline-none rounded-full' />
-          <div className='flex gap-3'>
+          <input type="text" onChange={handlesearch} placeholder='search products .......' className='md:max-w-[600px] w-full border-yellow-400 mx-auto px-4 py-1 mb-2 border outline-none rounded-full' />
+          <div className='flex md:gap-3 gap-10'>
             {
               filtered.map((item)=>{
                 return(
@@ -84,7 +84,7 @@ const Products = () => {
             }
           </div>
           </div>
-       
+       <div className='mt-3' style={{overflowX:'scroll'}}>
           <table className='w-full p-5' >
             <thead className='w-full'>
               <tr className='border bg-yellow-500 '>
@@ -103,13 +103,13 @@ const Products = () => {
                 data?.map((item,i)=>{
                   return(
                     <tr key={i} className='border'>
-                      <td>{i+1}</td>
-                <td >{item.productname}</td>
-                <td><img className='w-[100px] object-cover rounded h-[40px]' src={item.productimage} alt="" /></td>
-                <td>{item.category}</td>
-                <td>{item.company}</td>
-                <td>{item.price}</td>
-                <td>
+                      <td className='text-center'>{i+1}</td>
+                <td className='text-center'>{item.productname}</td>
+                <td className='items-center flex justify-center'><img className='w-[100px] object-cover rounded h-[40px]' src={item.productimage} alt="" /></td>
+                <td className='text-center'>{item.category}</td>
+                <td className='text-center'>{item.company}</td>
+                <td className='text-center'>{item.price}</td>
+                <td className='text-center flex justify-center'>
                  <Link to={`/view/${item._id}`}> <button className='bg-yellow-500 text-white hover:bg-yellow-600 duration-300 rounded border px-2'>view</button> </Link>
                  <Link to={`/edit/${item._id}`}> <button className='border mx-2 bg-green-500 hover:bg-green-600 duration-300 text-white rounded px-2'>edit</button> </Link>
                   <button onClick={()=>deleteProduct(item._id)} className='border bg-red-500 hover:bg-red-600 rounded text-white duration-300 px-2'>delete</button>
@@ -121,7 +121,7 @@ const Products = () => {
               
             </tbody>
           </table>
-
+          </div>
          
            
         </div>
